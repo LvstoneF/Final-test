@@ -18,6 +18,7 @@ void Backtrack(int t)
         cout<<"每个部件的供应商："<<endl;
         for(j=1;j<=n;j++)
            cout << x[j] << " " ;
+           cout << endl;
     }
     else
     {
@@ -60,15 +61,3 @@ int main()
     cout<<bestw;
     return 0;
 }
-/*
-测试数据:
-3
-3
-7
-1 2 3
-3 2 1
-2 3 2
-1 2 3
-5 4 2
-2 1 2
-*/
