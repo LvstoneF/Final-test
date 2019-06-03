@@ -21,7 +21,7 @@
 //            /*找到每一个连乘子矩阵的首尾*/
 //            int j = i+r-1;
 //            /*初始化分割点和计算次数A[i][j] = A[i]*(A[i+1][j])*/
-//            m[i][j] = 0x7fffffff;
+//            m[i][j] = 0x7ffff;
 //            // 初始化最优的断点
 //            /*然后枚举子矩阵中的每一个分割点，直到找到那个最优的*/
 //            for(int k = i; k<j; k++)
@@ -92,7 +92,7 @@ void MatrixChainOrder(int *p,int m[N][N],int s[N][N],int length)
         for(i=1;i<=n-l+1;i++)
         {
             j=i+l-1; //以i为起始位置，j为长度为l的链的末位，
-            m[i][j]=0x7fffffff;
+            m[i][j]=0x7ffff;
             //k从i到j-1,以k为位置划分
             for(k=i;k<=j-1;k++)
             {
@@ -128,4 +128,23 @@ int main()
     MatrixChainOrder(p,m,s,N);
     PrintAnswer(s,1,N-1);
     return 0;
+}
+
+
+void MatrixChainOrder(int i, int j)
+{
+    if(i == j) return 0;
+    else
+    {
+        int u = 0xffff;
+        for(int k = i+1; k<j; k++)
+        {
+            int t = MatrixChainOrder(i,k)+MatrixChainOrder(k+1,j)+p[i-1]*p[k]*p[j];
+            if(t<u)
+            {
+                s[i][j] = k;
+                m[i][j] = t;
+            }
+        }
+    }
 }

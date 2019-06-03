@@ -23,7 +23,7 @@ int partition(int a[], int left, int right)
     }
     a[left] = a[j];
     a[j] = temp;
-    return i;
+    return j;
 }
 
 void quickSort(int a[], int left, int right)
@@ -41,8 +41,8 @@ int main()
 {
 int a[9]={8,2,6,12,1,9,5,5,10};
 int i;
-quickSort(a,0,8);/*排好序的结果*/
-for(i=0;i<8;i++)
+quickSort(a,0,9);/*排好序的结果*/
+for(i=0;i<=9;i++)
 printf("%4d",a[i]);
 getchar();
 return 0;
